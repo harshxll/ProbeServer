@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: pecathon-probe-server
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ADMIN_TOKEN
+        value: HARSHUL1744
+      - key: PROBE_BUDGET
+        value: 4000
+      - key: NOISE_STD
+        value: 0.0005
+      - key: RATE_LIMIT_SECONDS
+        value: 0.5
+      - key: MAX_REQUESTS_PER_TEAM
+        value: 800
+      - key: GLOBAL_JITTER
+        value: 0.02
+      - key: BACKOFF_FACTOR
+        value: 1.15
+      - key: DOMAIN_MIN
+        value: -3
+      - key: DOMAIN_MAX
+        value: 3
+      - key: TEAM_TOKENS_JSON
+        sync: false
+
